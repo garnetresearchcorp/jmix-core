@@ -17,6 +17,7 @@
 package io.jmix.core.querycondition;
 
 import com.google.common.base.Strings;
+import io.jmix.core.propertyfilter.dateinterval.JpqlDateInterval;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class PropertyConditionUtils {
@@ -38,6 +39,16 @@ public class PropertyConditionUtils {
         String operation = propertyCondition.getOperation();
         return PropertyCondition.Operation.IN_LIST.equals(operation)
                 || PropertyCondition.Operation.NOT_IN_LIST.equals(operation);
+    }
+
+    /**
+     * todo rp support it like unary operation useages?
+     * @param propertyCondition property condition
+     * @return true if property condition operation is "in interval"
+     */
+    public static boolean isInIntervalOperation(PropertyCondition propertyCondition) {
+        String operation = propertyCondition.getOperation();
+        return PropertyCondition.Operation.IN_INTERVAL.equals(operation);
     }
 
     /**
@@ -80,6 +91,9 @@ public class PropertyConditionUtils {
                 return "not in";
             case PropertyCondition.Operation.IS_SET:
                 return Boolean.TRUE.equals(condition.getParameterValue()) ? "is not null" : "is null";
+            case PropertyCondition.Operation.IN_INTERVAL:
+                //noinspection ConstantConditions
+                return ((JpqlDateInterval) condition.getParameterValue()).toJpql(condition.getProperty());
         }
         throw new RuntimeException("Unknown PropertyCondition operation: " + condition.getOperation());
     }
