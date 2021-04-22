@@ -93,7 +93,7 @@ public class PropertyConditionUtils {
                 return Boolean.TRUE.equals(condition.getParameterValue()) ? "is not null" : "is null";
             case PropertyCondition.Operation.IN_INTERVAL:
                 //noinspection ConstantConditions
-                return ((JpqlDateInterval) condition.getParameterValue()).toJpql(condition.getProperty());
+                return ((JpqlDateInterval) condition.getParameterValue()).formatJpql(condition.getProperty());
         }
         throw new RuntimeException("Unknown PropertyCondition operation: " + condition.getOperation());
     }

@@ -19,5 +19,5 @@ package io.jmix.core.propertyfilter.dateinterval;
 // todo rp javaDocs
 public interface JpqlDateInterval {
 
-    String toJpql(String property);
+    String formatJpql(String property);
 }
