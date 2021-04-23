@@ -16,8 +16,14 @@
 
 package io.jmix.core.propertyfilter.dateinterval;
 
-// todo rp javaDocs
+/**
+ * Interface to be implemented by date intervals that have JPQL expression.
+ */
 public interface JpqlDateInterval {
 
+    /**
+     * @param property entity property
+     * @return formatted JPQL string
+     */
     String formatJpql(String property);
 }

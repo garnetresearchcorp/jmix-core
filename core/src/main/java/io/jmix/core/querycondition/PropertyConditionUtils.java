@@ -42,7 +42,6 @@ public class PropertyConditionUtils {
     }
 
     /**
-     * todo rp support it like unary operation useages?
      * @param propertyCondition property condition
      * @return true if property condition operation is "in interval"
      */
