@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Haulmont.
+ * Copyright 2020 Haulmont.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
+@NonNullApi
 package io.jmix.core.propertyfilter.dateinterval;
 
-/**
- * Interface to be implemented by date intervals that have JPQL expression.
- */
-public interface JpqlDateInterval {
-
-    /**
-     * @param property entity property
-     * @return formatted JPQL string operation
-     */
-    String formatJpql(String property);
-}
+import org.springframework.lang.NonNullApi;
