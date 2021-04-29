@@ -17,8 +17,9 @@
 package io.jmix.core.querycondition;
 
 import com.google.common.base.Strings;
-import io.jmix.core.propertyfilter.dateinterval.JpqlDateInterval;
 import org.apache.commons.lang3.RandomStringUtils;
+
+import java.util.function.Function;
 
 public class PropertyConditionUtils {
 
@@ -91,9 +92,19 @@ public class PropertyConditionUtils {
             case PropertyCondition.Operation.IS_SET:
                 return Boolean.TRUE.equals(condition.getParameterValue()) ? "is not null" : "is null";
             case PropertyCondition.Operation.IN_INTERVAL:
-                //noinspection ConstantConditions
-                return ((JpqlDateInterval) condition.getParameterValue()).formatJpql(condition.getProperty());
+                return getInIntervalJpqlOperation(condition);
         }
         throw new RuntimeException("Unknown PropertyCondition operation: " + condition.getOperation());
+    }
+
+    protected static String getInIntervalJpqlOperation(PropertyCondition condition) {
+        Object parameterValue = condition.getParameterValue();
+        if (parameterValue == null) {
+            throw new RuntimeException("Cannot build operation condition for date interval " +
+                    "because parameter value is null");
+        }
+
+        //noinspection unchecked
+        return ((Function<String, String>) parameterValue).apply(condition.getProperty());
     }
 }
