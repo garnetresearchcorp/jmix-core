@@ -21,7 +21,6 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -30,8 +29,6 @@ import java.util.stream.Collectors;
 @ConfigurationProperties(prefix = "jmix.core")
 @ConstructorBinding
 public class CoreProperties {
-
-    public static final String SERVER_SERVLET_CONTEXTPATH = "server.servlet.context-path";
 
     String webHostName;
     String webPort;
