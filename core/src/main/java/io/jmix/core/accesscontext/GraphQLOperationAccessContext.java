@@ -18,10 +18,10 @@ package io.jmix.core.accesscontext;
 
 public class GraphQLOperationAccessContext implements AccessContext {
     protected boolean permitted = true;
-    protected final String name;
+    protected final String operationName;
 
-    public GraphQLOperationAccessContext(String name) {
-        this.name = name;
+    public GraphQLOperationAccessContext(String operationName) {
+        this.operationName = operationName;
     }
 
     public boolean isPermitted() {
@@ -32,7 +32,7 @@ public class GraphQLOperationAccessContext implements AccessContext {
         permitted = false;
     }
 
-    public String getName() {
-        return name;
+    public String getOperationName() {
+        return operationName;
     }
 }
