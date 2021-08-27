@@ -115,6 +115,7 @@ public class MethodsCache {
         Function getter;
         try {
             Class gimmeLookup;
+            //This code needed to classloader of clazz and classloader of lambda function be same
             try {
                 gimmeLookup = ReflectUtils.defineClass("GimmeLookup", gimmeLookupClassDef(), clazz.getClassLoader());
             } catch (Exception e) {
@@ -141,6 +142,7 @@ public class MethodsCache {
         BiConsumer setter;
         try {
             Class gimmeLookup;
+            //This code needed to classloader of clazz and classloader of lambda function be same
             try {
                 gimmeLookup = ReflectUtils.defineClass("GimmeLookup", gimmeLookupClassDef(), clazz.getClassLoader());
             } catch (Exception e) {
